@@ -10,8 +10,8 @@ const notFound = require('./error-handlers/404.js');
 const logger = require('./middleware/logger.js');
 const authRoutes = require('./auth/routes.js');
 
-// const v1Routes = require('./routes/v1.js');
-const v2Routes = require('./routes/v2.js');
+const v1Routes = require('./routes/v1.js');
+// const v2Routes = require('./routes/v2.js');
 
 const app = express();
 
@@ -25,8 +25,8 @@ app.use(logger);
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// app.use('http://localhost:3000/api/v1', v1Routes); // http://localhost:3000/api/v1/clothes
-app.use('http://localhost:3000/api/v2', v2Routes);
+app.use('http://localhost:3000/api/v1', v1Routes); 
+// app.use('http://localhost:3000/api/v2', v2Routes);
 
 app.use(authRoutes);
 app.use('*', notFoundHandler);
