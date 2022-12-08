@@ -2,7 +2,7 @@
 
 const express = require('express');
 const cors = require('cors');
-const morgan = require('morgan');
+
 
 const notFoundHandler = require('./error-handlers/404.js');
 const errorHandler = require('./error-handlers/500.js');
@@ -18,7 +18,7 @@ const app = express();
 
 app.use(express.json());
 app.use(cors());
-app.use(morgan('dev'));
+
 
 app.use(logger);
 
