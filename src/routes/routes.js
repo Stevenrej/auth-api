@@ -3,10 +3,10 @@
 const express = require('express');
 const authRouter = express.Router();
 
-const { users } = require('../models/index');
-const basicAuth = require('./middleware/basic.js')
-const bearerAuth = require('./middleware/bearer.js')
-const permissions = require('./middleware/acl.js')
+const { users } = require('../models');
+const basicAuth = require('../middleware/basic.js');
+const bearerAuth = require('../middleware/bearer.js');
+const permissions = require('../middleware/acl.js');
 
 authRouter.post('/signup', async (req, res, next) => {
   try {
@@ -42,7 +42,5 @@ authRouter.get('/users', bearerAuth, permissions('delete'), async (req, res, nex
 authRouter.get('/secret', bearerAuth, async (req, res, next) => {
   res.status(200).send('Welcome to the secret area');
 });
-
-module.exports = authRouter;
 
 module.exports = authRouter;
