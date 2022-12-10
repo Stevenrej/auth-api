@@ -20,8 +20,8 @@ beforeAll( async () => {
 afterAll( async () => {
   await db.drop();
 });
-describe('authorization', () => {
-  it('sign up route works', async () => {
+describe('Auth Router', () => {
+  it('Can create a new user', async () => {
     let response = await request.post('/signup').send(userData.testUser);
     let userObj = response.body;
 
@@ -31,7 +31,7 @@ describe('authorization', () => {
     expect(userObj.user.username).toEqual(userData.testUser.username);
   });
 
-  it('sign in route works', async () => {
+  it('Can sign in a user', async () => {
     let { username, password } = userData.testUser;
     let response = await request.post('/signin').auth(username, password);
     let userObj = response.body;
